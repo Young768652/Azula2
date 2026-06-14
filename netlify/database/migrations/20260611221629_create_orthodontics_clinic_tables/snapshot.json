@@ -1,0 +1,906 @@
+{
+  "version": "8",
+  "dialect": "postgres",
+  "id": "0759d8ac-a5f1-4f19-9c9e-6207d72b80aa",
+  "prevIds": [
+    "00000000-0000-0000-0000-000000000000"
+  ],
+  "ddl": [
+    {
+      "isRlsEnabled": false,
+      "name": "citas",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "notas_evolucion",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "pacientes",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "pagos",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "sesiones",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "tratamientos_ortodoncia",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "usuarios",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "type": "serial",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "citas"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "paciente_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "citas"
+    },
+    {
+      "type": "date",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "fecha",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "citas"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "hora",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "citas"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "especialidad",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "citas"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'programada'",
+      "generated": null,
+      "identity": null,
+      "name": "estado",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "citas"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "notas",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "citas"
+    },
+    {
+      "type": "timestamp",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "creado_en",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "citas"
+    },
+    {
+      "type": "serial",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "notas_evolucion"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "tratamiento_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "notas_evolucion"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "nota",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "notas_evolucion"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "arco_usado",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "notas_evolucion"
+    },
+    {
+      "type": "numeric(10,2)",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "monto_pagado",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "notas_evolucion"
+    },
+    {
+      "type": "timestamp",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "creado_en",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "notas_evolucion"
+    },
+    {
+      "type": "serial",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "pacientes"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "nombre_completo",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "pacientes"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "dni",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "pacientes"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "celular",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "pacientes"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "correo",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "pacientes"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "direccion",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "pacientes"
+    },
+    {
+      "type": "date",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "fecha_nacimiento",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "pacientes"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "antecedentes",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "pacientes"
+    },
+    {
+      "type": "timestamp",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "creado_en",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "pacientes"
+    },
+    {
+      "type": "timestamp",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "actualizado_en",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "pacientes"
+    },
+    {
+      "type": "serial",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "pagos"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "paciente_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "pagos"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "concepto",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "pagos"
+    },
+    {
+      "type": "numeric(10,2)",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "monto",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "pagos"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'pendiente'",
+      "generated": null,
+      "identity": null,
+      "name": "estado",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "pagos"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "tipo_procedimiento",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "pagos"
+    },
+    {
+      "type": "date",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "fecha_pago",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "pagos"
+    },
+    {
+      "type": "timestamp",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "creado_en",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "pagos"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "sesiones"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "usuario_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "sesiones"
+    },
+    {
+      "type": "timestamp",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "expira_en",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "sesiones"
+    },
+    {
+      "type": "timestamp",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "creado_en",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "sesiones"
+    },
+    {
+      "type": "serial",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "tratamientos_ortodoncia"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "paciente_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "tratamientos_ortodoncia"
+    },
+    {
+      "type": "numeric(10,2)",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "costo_total",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "tratamientos_ortodoncia"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "cuotas_pactadas",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "tratamientos_ortodoncia"
+    },
+    {
+      "type": "numeric(10,2)",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "saldo_pendiente",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "tratamientos_ortodoncia"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "tipo_arco_actual",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "tratamientos_ortodoncia"
+    },
+    {
+      "type": "boolean",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "true",
+      "generated": null,
+      "identity": null,
+      "name": "activo",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "tratamientos_ortodoncia"
+    },
+    {
+      "type": "timestamp",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "creado_en",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "tratamientos_ortodoncia"
+    },
+    {
+      "type": "timestamp",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "actualizado_en",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "tratamientos_ortodoncia"
+    },
+    {
+      "type": "serial",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "usuarios"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "nombre",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "usuarios"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "email",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "usuarios"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "password",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "usuarios"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'recepcionista'",
+      "generated": null,
+      "identity": null,
+      "name": "rol",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "usuarios"
+    },
+    {
+      "type": "boolean",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "true",
+      "generated": null,
+      "identity": null,
+      "name": "activo",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "usuarios"
+    },
+    {
+      "type": "timestamp",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "creado_en",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "usuarios"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "paciente_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "pacientes",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "name": "citas_paciente_id_pacientes_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "citas"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "tratamiento_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "tratamientos_ortodoncia",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "name": "notas_evolucion_tratamiento_id_tratamientos_ortodoncia_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "notas_evolucion"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "paciente_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "pacientes",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "name": "pagos_paciente_id_pacientes_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "pagos"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "usuario_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "usuarios",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "sesiones_usuario_id_usuarios_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "sesiones"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "paciente_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "pacientes",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "name": "tratamientos_ortodoncia_paciente_id_pacientes_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "tratamientos_ortodoncia"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "citas_pkey",
+      "schema": "public",
+      "table": "citas",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "notas_evolucion_pkey",
+      "schema": "public",
+      "table": "notas_evolucion",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "pacientes_pkey",
+      "schema": "public",
+      "table": "pacientes",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "pagos_pkey",
+      "schema": "public",
+      "table": "pagos",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "sesiones_pkey",
+      "schema": "public",
+      "table": "sesiones",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "tratamientos_ortodoncia_pkey",
+      "schema": "public",
+      "table": "tratamientos_ortodoncia",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "usuarios_pkey",
+      "schema": "public",
+      "table": "usuarios",
+      "entityType": "pks"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "dni"
+      ],
+      "nullsNotDistinct": false,
+      "name": "pacientes_dni_key",
+      "schema": "public",
+      "table": "pacientes",
+      "entityType": "uniques"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "email"
+      ],
+      "nullsNotDistinct": false,
+      "name": "usuarios_email_key",
+      "schema": "public",
+      "table": "usuarios",
+      "entityType": "uniques"
+    }
+  ],
+  "renames": []
+}
