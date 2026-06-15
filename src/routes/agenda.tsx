@@ -195,7 +195,7 @@ function Agenda() {
       </div>
 
       {whatsappMsg && (
-        <div style={{ background: 'rgba(37,211,102,0.1)', border: '1px solid rgba(37,211,102,0.3)', borderRadius: 8, padding: '10px 16px', marginBottom: 16, color: '#25d366', fontSize: 14, display: 'flex', alignItems: 'center', gap: 8 }}>
+        <div style={{ background: 'var(--accent-glow)', border: '1px solid rgba(26,75,140,0.3)', borderRadius: 8, padding: '10px 16px', marginBottom: 16, color: 'var(--accent)', fontSize: 14, display: 'flex', alignItems: 'center', gap: 8 }}>
           <MessageCircle size={14} /> {whatsappMsg}
         </div>
       )}
@@ -234,13 +234,13 @@ function Agenda() {
                 <button
                   key={d}
                   onClick={() => setSelectedDay(dateStr)}
-                  style={{
+                    style={{
                     width: '100%', aspectRatio: '1', borderRadius: 8,
-                    background: isSelected ? 'var(--accent)' : isToday ? 'rgba(0,200,204,0.1)' : 'transparent',
+                    background: isSelected ? 'var(--accent)' : isToday ? 'rgba(26,75,140,0.08)' : 'transparent',
                     color: isSelected ? 'var(--bg-primary)' : isToday ? 'var(--accent)' : 'var(--text-secondary)',
                     cursor: 'pointer', fontSize: 13, fontWeight: isSelected || isToday ? 700 : 400,
                     position: 'relative', transition: 'all 0.15s',
-                    border: isSelected ? 'none' : isToday ? '1px solid rgba(0,200,204,0.3)' : '1px solid transparent',
+                    border: isSelected ? 'none' : isToday ? '1px solid rgba(26,75,140,0.3)' : '1px solid transparent',
                   }}
                 >
                   {d}

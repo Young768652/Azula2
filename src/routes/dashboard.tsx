@@ -116,13 +116,13 @@ function Dashboard() {
           icon={<Braces size={20} />}
           label="Tratamientos Activos"
           value={loading ? '—' : String(stats?.tratamientosActivos ?? 0)}
-          color="#00c8cc"
+          color="#1A4B8C"
         />
         <StatCard
           icon={<CheckCircle2 size={20} />}
           label="Total Cobrado del Mes"
           value={loading ? '—' : `S/ ${parseFloat(stats?.totalCobradoMes ?? '0').toLocaleString('es-PE', { minimumFractionDigits: 2 })}`}
-          color="#10b981"
+          color="#1A4B8C"
         />
       </div>
 
@@ -131,7 +131,7 @@ function Dashboard() {
         <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
           <div style={{ padding: '18px 20px 14px', borderBottom: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <Calendar size={16} color="var(--accent)" />
+              <Calendar size={16} className="icon icon-accent" />
               <span style={{ fontWeight: 600, color: 'var(--text-primary)', fontSize: 15 }}>Orden del Día</span>
             </div>
             <button onClick={loadStats} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-muted)', padding: 4 }}>
@@ -181,7 +181,7 @@ function Dashboard() {
         {/* Pagos pendientes */}
         <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
           <div style={{ padding: '18px 20px 14px', borderBottom: '1px solid var(--border)', display: 'flex', alignItems: 'center', gap: 8 }}>
-            <AlertTriangle size={16} color="#f59e0b" />
+            <AlertTriangle size={16} className="icon icon-warning" />
             <span style={{ fontWeight: 600, color: 'var(--text-primary)', fontSize: 15 }}>Pagos Pendientes</span>
           </div>
           <div>

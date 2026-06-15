@@ -255,9 +255,9 @@ function Ortodoncia() {
                         <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 2 }}>Cuotas Pactadas</div>
                         <div style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: 15 }}>{trat.cuotasPactadas}</div>
                       </div>
-                      <div>
+                        <div>
                         <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 2 }}>Saldo Pendiente</div>
-                        <div style={{ fontWeight: 700, color: parseFloat(trat.saldoPendiente) > 0 ? '#f59e0b' : '#10b981', fontSize: 15 }}>
+                        <div style={{ fontWeight: 700, color: parseFloat(trat.saldoPendiente) > 0 ? '#f59e0b' : '#1A4B8C', fontSize: 15 }}>
                           S/ {parseFloat(trat.saldoPendiente).toFixed(2)}
                         </div>
                       </div>
@@ -270,9 +270,9 @@ function Ortodoncia() {
                     </div>
 
                     <div>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
                         <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>Progreso de pago</span>
-                        <span style={{ fontSize: 12, fontWeight: 600, color: pct >= 100 ? '#10b981' : 'var(--text-secondary)' }}>{pct}%</span>
+                        <span style={{ fontSize: 12, fontWeight: 600, color: pct >= 100 ? '#1A4B8C' : 'var(--text-secondary)' }}>{pct}%</span>
                       </div>
                       <div className="progress-bar">
                         <div className="progress-fill" style={{ width: `${pct}%` }} />
@@ -365,7 +365,7 @@ function Ortodoncia() {
                               {nota.montoPagado && parseFloat(nota.montoPagado) > 0 && (
                                 <div style={{ fontSize: 12 }}>
                                   <span style={{ color: 'var(--text-muted)' }}>Pago: </span>
-                                  <span style={{ color: '#10b981', fontWeight: 600 }}>S/ {parseFloat(nota.montoPagado).toFixed(2)}</span>
+                                  <span style={{ color: '#1A4B8C', fontWeight: 600 }}>S/ {parseFloat(nota.montoPagado).toFixed(2)}</span>
                                 </div>
                               )}
                             </div>

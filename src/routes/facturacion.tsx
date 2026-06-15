@@ -163,9 +163,9 @@ function Facturacion() {
       datasets: [{
         label: 'Ingresos (S/)',
         data: sorted.map(([, v]) => v),
-        backgroundColor: 'rgba(0,200,204,0.7)',
+        backgroundColor: 'rgba(26,75,140,0.7)',
         borderRadius: 6,
-        borderColor: 'rgba(0,200,204,0.9)',
+        borderColor: 'rgba(26,75,140,0.9)',
         borderWidth: 1,
       }],
     }
@@ -177,10 +177,10 @@ function Facturacion() {
     datasets: [{
       data: frecuentesData.map(f => f.conteo),
       backgroundColor: [
-        'rgba(0,200,204,0.8)',
+        'rgba(26,75,140,0.8)',
         'rgba(59,130,246,0.8)',
         'rgba(245,158,11,0.8)',
-        'rgba(16,185,129,0.8)',
+        'rgba(26,75,140,0.8)',
         'rgba(139,92,246,0.8)',
       ],
       borderWidth: 0,
@@ -234,12 +234,12 @@ function Facturacion() {
         </div>
         <div className="card" style={{ padding: '18px 20px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
-            <div style={{ width: 36, height: 36, borderRadius: 9, background: 'rgba(16,185,129,0.15)', border: '1px solid rgba(16,185,129,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#10b981' }}>
+            <div style={{ width: 36, height: 36, borderRadius: 9, background: 'rgba(26,75,140,0.12)', border: '1px solid rgba(26,75,140,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#1A4B8C' }}>
               <CheckCircle2 size={17} />
             </div>
             <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>Total Cobrado</span>
           </div>
-          <div style={{ fontSize: 22, fontWeight: 700, color: '#10b981' }}>
+          <div style={{ fontSize: 22, fontWeight: 700, color: '#1A4B8C' }}>
             S/ {totalCobrado.toLocaleString('es-PE', { minimumFractionDigits: 2 })}
           </div>
           <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 4 }}>
@@ -248,7 +248,7 @@ function Facturacion() {
         </div>
         <div className="card" style={{ padding: '18px 20px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
-            <div style={{ width: 36, height: 36, borderRadius: 9, background: 'rgba(0,200,204,0.15)', border: '1px solid rgba(0,200,204,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent)' }}>
+            <div style={{ width: 36, height: 36, borderRadius: 9, background: 'rgba(26,75,140,0.12)', border: '1px solid rgba(26,75,140,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent)' }}>
               <TrendingUp size={17} />
             </div>
             <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>Total Facturado</span>
@@ -303,7 +303,7 @@ function Facturacion() {
                     <tr key={pago.id}>
                       <td style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{pago.pacienteNombre}</td>
                       <td>{pago.concepto}</td>
-                      <td style={{ fontWeight: 700, color: pago.estado === 'pagado' ? '#10b981' : '#f59e0b' }}>
+                      <td style={{ fontWeight: 700, color: pago.estado === 'pagado' ? '#1A4B8C' : '#f59e0b' }}>
                         S/ {parseFloat(pago.monto).toFixed(2)}
                       </td>
                       <td><span className={`badge badge-${pago.estado}`}>{pago.estado === 'pagado' ? 'Pagado' : 'Pendiente'}</span></td>
@@ -391,7 +391,7 @@ function Facturacion() {
                       <tr key={f.concepto}>
                         <td style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{f.concepto}</td>
                         <td>{f.conteo}</td>
-                        <td style={{ fontWeight: 700, color: '#10b981' }}>S/ {parseFloat(f.total || '0').toFixed(2)}</td>
+                        <td style={{ fontWeight: 700, color: '#1A4B8C' }}>S/ {parseFloat(f.total || '0').toFixed(2)}</td>
                       </tr>
                     ))}
                   </tbody>

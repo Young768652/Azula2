@@ -1,6 +1,7 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { useState, useEffect } from 'react'
 import { AuthProvider, useAuth } from '../lib/AuthContext.js'
+import { CursorTrail } from '../components/CursorTrail.js'
 import { Stethoscope, Eye, EyeOff, AlertCircle } from 'lucide-react'
 
 export const Route = createFileRoute('/login')({
@@ -19,6 +20,9 @@ function LoginPage() {
   const [showPass, setShowPass] = useState(false)
   const [error, setError] = useState('')
   const [submitting, setSubmitting] = useState(false)
+  const [focusEmail, setFocusEmail] = useState(false)
+  const [focusPass, setFocusPass] = useState(false)
+  const [shake, setShake] = useState(false)
 
   useEffect(() => {
     if (!loading && user) {
@@ -60,6 +64,14 @@ function LoginPage() {
     }
   }
 
+  useEffect(() => {
+    if (error) {
+      setShake(true)
+      const t = setTimeout(() => setShake(false), 480)
+      return () => clearTimeout(t)
+    }
+  }, [error])
+
   return (
     <div style={{
       minHeight: '100vh',
@@ -71,19 +83,14 @@ function LoginPage() {
       position: 'relative',
       overflow: 'hidden',
     }}>
-      {/* Background decoration */}
-      <div style={{
-        position: 'absolute', top: -200, right: -200, width: 600, height: 600,
-        borderRadius: '50%', background: 'radial-gradient(circle, rgba(0,200,204,0.05) 0%, transparent 70%)',
-        pointerEvents: 'none',
-      }} />
-      <div style={{
-        position: 'absolute', bottom: -150, left: -150, width: 500, height: 500,
-        borderRadius: '50%', background: 'radial-gradient(circle, rgba(59,130,246,0.04) 0%, transparent 70%)',
-        pointerEvents: 'none',
-      }} />
+      <CursorTrail />
+      {/* Background decoration blobs */}
+      <div className="login-decor-blob blob-1 blob-ani" />
+      <div className="login-decor-blob blob-2 blob-ani" />
 
       <div style={{ width: '100%', maxWidth: 420, animation: 'fadeIn 0.4s ease-out' }}>
+        {/* Cursor trail container (absolute positioned) */}
+        
         {/* Logo / Header */}
         <div style={{ textAlign: 'center', marginBottom: 40 }}>
           <div style={{
@@ -91,9 +98,9 @@ function LoginPage() {
             background: 'linear-gradient(135deg, #00c8cc 0%, #006d70 100%)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             margin: '0 auto 16px',
-            boxShadow: '0 0 40px rgba(0,200,204,0.3)',
+            boxShadow: '0 0 40px rgba(26,75,140,0.18)',
           }}>
-            <Stethoscope size={28} color="#fff" />
+            <img src="/favicon-source.png" alt="Azula Dent logo" style={{ width: 64, height: 64, borderRadius: 14, objectFit: 'cover' }} />
           </div>
           <h1 style={{ fontSize: 26, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 6 }}>
             Azula Dent System
@@ -104,7 +111,7 @@ function LoginPage() {
         </div>
 
         {/* Form Card */}
-        <div className="card" style={{ padding: '32px' }}>
+        <div className={`card ${shake ? 'form-shake' : ''}`} style={{ padding: '32px' }}>
           <h2 style={{ fontSize: 18, fontWeight: 600, color: 'var(--text-primary)', marginBottom: 24 }}>
             Iniciar Sesión
           </h2>
@@ -122,28 +129,37 @@ function LoginPage() {
 
           <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <label>Correo Electrónico</label>
-              <input
-                type="email"
-                className="input-field"
-                placeholder="correo@clinica.com"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                autoComplete="email"
-              />
+              <div className="form-field">
+                <input
+                  type="email"
+                  className="input-field"
+                  placeholder=""
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  onFocus={() => setFocusEmail(true)}
+                  onBlur={() => setFocusEmail(false)}
+                  autoComplete="email"
+                  autoFocus
+                />
+                <label className={(focusEmail || email) ? 'active' : ''}>Correo Electrónico</label>
+              </div>
             </div>
 
             <div className="form-group" style={{ position: 'relative' }}>
-              <label>Contraseña</label>
-              <input
-                type={showPass ? 'text' : 'password'}
-                className="input-field"
-                placeholder="••••••••"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                style={{ paddingRight: 44 }}
-                autoComplete="current-password"
-              />
+              <div className="form-field">
+                <input
+                  type={showPass ? 'text' : 'password'}
+                  className="input-field"
+                  placeholder=""
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                  onFocus={() => setFocusPass(true)}
+                  onBlur={() => setFocusPass(false)}
+                  style={{ paddingRight: 44 }}
+                  autoComplete="current-password"
+                />
+                <label className={(focusPass || password) ? 'active' : ''}>Contraseña</label>
+              </div>
               <button
                 type="button"
                 onClick={() => setShowPass(!showPass)}
@@ -209,3 +225,6 @@ function LoginPage() {
     </div>
   )
 }
+
+// Cursor trail refs and animation hook (placed after component for clarity)
+

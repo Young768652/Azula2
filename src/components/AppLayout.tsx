@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate, useRouterState } from '@tanstack/react-router'
 import { useAuth } from '../lib/AuthContext.js'
+import { CursorTrail } from './CursorTrail.js'
 import {
   LayoutDashboard,
   Users,
@@ -27,12 +28,18 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate()
   const routerState = useRouterState()
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [toast, setToast] = useState<string | null>(null)
 
   const currentPath = routerState.location.pathname
 
   async function handleLogout() {
     await logout()
     navigate({ to: '/login' })
+  }
+
+  function showToast(msg: string) {
+    setToast(msg)
+    setTimeout(() => setToast(null), 3000)
   }
 
   const visibleNav = NAV_ITEMS.filter(item =>
@@ -47,7 +54,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div style={{ display: 'flex', minHeight: '100vh' }}>
-      {/* Mobile overlay */}
+      <CursorTrail />
       {sidebarOpen && (
         <div
           style={{
@@ -69,14 +76,11 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
           borderBottom: '1px solid var(--border)',
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <div style={{
-              width: 36, height: 36, borderRadius: 10,
-              background: 'linear-gradient(135deg, #00c8cc, #006d70)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              flexShrink: 0,
-            }}>
-              <Stethoscope size={18} color="#fff" />
-            </div>
+            <img
+              src="/favicon-source.png"
+              alt="Azula Dent logo"
+              style={{ width: 48, height: 48, borderRadius: 12, objectFit: 'cover', flexShrink: 0 }}
+            />
             <div>
               <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--text-primary)', lineHeight: 1.2 }}>
                 Azula Dent
@@ -111,6 +115,9 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
         <div style={{
           padding: '16px',
           borderTop: '1px solid var(--border)',
+          background: '#ffffff',
+          borderBottomLeftRadius: 16,
+          borderBottomRightRadius: 16,
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
             <div className="avatar-circle" style={{ fontSize: 12 }}>
@@ -181,6 +188,25 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
 
         {/* Page content */}
         <div className="page-content">
+          {/* Hero banner */}
+          <div className="hero card--elevated">
+            <div>
+              <div className="title">Bienvenido a Azula Dent</div>
+              <div className="subtitle">Panel centralizado — gestión de citas, pacientes y facturación</div>
+              <div style={{ marginTop: 12, display: 'flex', gap: 8 }}>
+                <button className="btn-primary large" onClick={() => { showToast('Navegando a agenda...'); navigate({ to: '/agenda' }) }}>Nueva Cita</button>
+                <button className="btn-secondary" onClick={() => { showToast('Abriendo lista de pacientes'); navigate({ to: '/pacientes' }) }}>Ver Pacientes</button>
+              </div>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+              <div className="hero-decor floaty">AD</div>
+              <div style={{ textAlign: 'right' }}>
+                <div className="fancy-badge">Versión Demo</div>
+                <div style={{ marginTop: 8, fontSize: 12, color: 'var(--text-muted)' }}>Última actividad: Ahora</div>
+              </div>
+            </div>
+          </div>
+
           {children}
         </div>
       </div>
@@ -190,6 +216,17 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
           .mobile-menu-btn { display: block !important; }
         }
       `}</style>
+      {/* Floating Action Button */}
+      <div className="fab">
+        <button aria-label="Nueva Cita" onClick={() => { showToast('Nueva cita'); navigate({ to: '/agenda' }) }}>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M5 12h14" /></svg>
+        </button>
+      </div>
+
+      {/* Toast portal */}
+      <div className="toast-portal" aria-live="polite">
+        {toast && <div className="toast">{toast}</div>}
+      </div>
     </div>
   )
 }
