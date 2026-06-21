@@ -1,7 +1,7 @@
 {
   "name": "azula-dent-system",
   "description": "Sistema Web de Gestión para la Clínica Dental Azula2",
-  "author": "Equipo Xiomara",
+  "author": "AZULA2",
   "private": true,
   "type": "module",
   "scripts": {
