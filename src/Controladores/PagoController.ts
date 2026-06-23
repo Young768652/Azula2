@@ -1,25 +1,26 @@
-import { db } from '../../db/index'; 
-import { pagos } from '../../db/schema';
-import { Pago, PagoBuilder } from '../models/Pago'; 
+import { db } from '../../db';
+import { PagoRepository } from '../Repositorios/PagoRepository';
+import { PagoService } from '../servicios/PagoService';
+import { PagoBuilder } from '../models/Pago';
 
 export class PagoController {
-  private database: typeof db;
+  constructor(private service: PagoService) {}
 
-  constructor(dbInstance: typeof db) {
-    this.database = dbInstance;
+  async listar() { 
+    return await this.service.obtenerTodos(); 
   }
 
-  async listar(): Promise<Pago[]> {
-    const datosBD = await this.database.select().from(pagos);
-    return datosBD.map(dato => 
-      new PagoBuilder()
-        .setId(dato.id)
-        .setPacienteId(dato.pacienteId)
-        .setConcepto(dato.concepto)
-        .setMonto(dato.monto)
-        .setEstado(dato.estado)
-        .build()
-    );
+  async crear(req: any) {
+    const nuevoPago = new PagoBuilder()
+      .setPacienteId(Number(req.body.pacienteId))
+      .setConcepto(req.body.concepto)
+      .setMonto(Number(req.body.monto))
+      .build();
+
+    return await this.service.crear(nuevoPago);
   }
 }
-export const pagoController = new PagoController(db);
+
+const repo = new PagoRepository(db);
+const servicio = new PagoService(repo);
+export const pagoController = new PagoController(servicio);

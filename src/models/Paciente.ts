@@ -1,14 +1,14 @@
-// Define la forma del Paciente
+import { IBuilder } from '../Interfaces/arquitectura';
+
 export class Paciente {
   public id!: number;
   public nombreCompleto!: string;
   public dni!: string;
-  public celular: string | null = null;
-  public correo: string | null = null;
+  public celular!: string | null;
+  public correo!: string | null;
 }
 
-// 2. EL ARMADOR (Construye al Paciente paso a paso)
-export class PacienteBuilder {
+export class PacienteBuilder implements IBuilder<Paciente> {
   private paciente: Paciente = new Paciente();
 
   public setId(id: number) { this.paciente.id = id; return this; }

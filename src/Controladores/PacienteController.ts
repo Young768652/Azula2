@@ -1,27 +1,15 @@
-import { db } from '../../db/index'; 
-import { pacientes } from '../../db/schema';
-import { Paciente, PacienteBuilder } from '../models/Paciente'; 
+import { db } from '../../db';
+import { PacienteRepository } from '../Repositorios/PacienteRepository';
+import { PacienteService } from '../servicios/PacienteService';
 
 export class PacienteController {
-  private database: typeof db;
+  constructor(private service: PacienteService) {}
 
-  // CONSTRUCTOR: Recibe la conexión a la base de datos
-  constructor(dbInstance: typeof db) {
-    this.database = dbInstance;
-  }
-
-  async listar(): Promise<Paciente[]> {
-    const datosBD = await this.database.select().from(pacientes);
-    // Usamos el Armador para ordenar la información en Moldes
-    return datosBD.map(dato => 
-      new PacienteBuilder()
-        .setId(dato.id)
-        .setNombre(dato.nombreCompleto)
-        .setDni(dato.dni)
-        .setCelular(dato.celular)
-        .setCorreo(dato.correo)
-        .build()
-    );
+  async listar() { 
+    return await this.service.obtenerTodos(); 
   }
 }
-export const pacienteController = new PacienteController(db);
+
+const repo = new PacienteRepository(db);
+const servicio = new PacienteService(repo);
+export const pacienteController = new PacienteController(servicio);

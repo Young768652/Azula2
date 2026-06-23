@@ -1,21 +1,19 @@
-// Define la forma del Pago/Recibo
+import { IBuilder } from '../Interfaces/arquitectura';
+
 export class Pago {
   public id!: number;
   public pacienteId!: number;
   public concepto!: string;
-  public monto!: string;
-  public estado!: string;
+  public monto!: number;
 }
 
-// 2. EL ARMADOR (Construye el Pago paso a paso)
-export class PagoBuilder {
+export class PagoBuilder implements IBuilder<Pago> {
   private pago: Pago = new Pago();
 
   public setId(id: number) { this.pago.id = id; return this; }
-  public setPacienteId(pId: number) { this.pago.pacienteId = pId; return this; }
-  public setConcepto(con: string) { this.pago.concepto = con; return this; }
-  public setMonto(mon: string) { this.pago.monto = mon; return this; }
-  public setEstado(est: string) { this.pago.estado = est; return this; }
+  public setPacienteId(id: number) { this.pago.pacienteId = id; return this; }
+  public setConcepto(concepto: string) { this.pago.concepto = concepto; return this; }
+  public setMonto(monto: number) { this.pago.monto = monto; return this; }
 
   public build(): Pago { return this.pago; }
 }

@@ -1,26 +1,27 @@
-import { db } from '../../db/index'; 
-import { citas } from '../../db/schema';
-import { Cita, CitaBuilder } from '../models/Cita'; 
+import { db } from '../../db';
+import { CitaRepository } from '../Repositorios/CitaRepository';
+import { CitaService } from '../servicios/CitaService';
+import { CitaBuilder } from '../models/Cita';
 
 export class CitaController {
-  private database: typeof db;
+  constructor(private service: CitaService) {}
 
-  constructor(dbInstance: typeof db) {
-    this.database = dbInstance;
+  async listar() { 
+    return await this.service.obtenerTodos(); 
   }
 
-  async listar(): Promise<Cita[]> {
-    const datosBD = await this.database.select().from(citas);
-    return datosBD.map(dato => 
-      new CitaBuilder()
-        .setId(dato.id)
-        .setPacienteId(dato.pacienteId)
-        .setFecha(dato.fecha)
-        .setHora(dato.hora)
-        .setEspecialidad(dato.especialidad)
-        .setEstado(dato.estado)
-        .build()
-    );
+  async crear(req: any) {
+    const nuevaCita = new CitaBuilder()
+      .setPacienteId(Number(req.body.pacienteId))
+      .setFecha(req.body.fecha)
+      .setHora(req.body.hora)
+      .setEstado(req.body.estado || 'Pendiente')
+      .build();
+
+    return await this.service.crear(nuevaCita);
   }
 }
-export const citaController = new CitaController(db);
+
+const repo = new CitaRepository(db);
+const servicio = new CitaService(repo);
+export const citaController = new CitaController(servicio);
