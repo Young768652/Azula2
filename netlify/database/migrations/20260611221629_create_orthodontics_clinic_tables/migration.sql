@@ -70,7 +70,7 @@ CREATE TABLE "usuarios" (
 	"activo" boolean DEFAULT true NOT NULL,
 	"creado_en" timestamp DEFAULT now()
 );
---> statement-breakpoint
+--> statement-breakpoint	
 ALTER TABLE "citas" ADD CONSTRAINT "citas_paciente_id_pacientes_id_fkey" FOREIGN KEY ("paciente_id") REFERENCES "pacientes"("id") ON DELETE CASCADE;--> statement-breakpoint
 ALTER TABLE "notas_evolucion" ADD CONSTRAINT "notas_evolucion_tratamiento_id_tratamientos_ortodoncia_id_fkey" FOREIGN KEY ("tratamiento_id") REFERENCES "tratamientos_ortodoncia"("id") ON DELETE CASCADE;--> statement-breakpoint
 ALTER TABLE "pagos" ADD CONSTRAINT "pagos_paciente_id_pacientes_id_fkey" FOREIGN KEY ("paciente_id") REFERENCES "pacientes"("id") ON DELETE CASCADE;--> statement-breakpoint
