@@ -1,6 +1,6 @@
-import { db } from '../../db';
+import { db } from '../../db'; 
 import { CitaRepository } from '../Repositorios/CitaRepository';
-import { CitaService } from '../servicios/CitaService';
+import { CitaService } from '../Servicios/CitaService'; // <-- Cambiado a 'S' mayúscula
 import { CitaBuilder } from '../models/Cita';
 
 export class CitaController {
