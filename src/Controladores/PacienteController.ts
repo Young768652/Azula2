@@ -1,6 +1,6 @@
 import { db } from '../../db';
 import { PacienteRepository } from '../Repositorios/PacienteRepository';
-import { PacienteService } from '../servicios/PacienteService';
+import { PacienteService } from '../Servicios/PacienteService';
 
 export class PacienteController {
   constructor(private service: PacienteService) {}
