@@ -1,6 +1,6 @@
 import { db } from '../../db';
 import { PagoRepository } from '../Repositorios/PagoRepository';
-import { PagoService } from '../servicios/PagoService';
+import { PagoService } from '../Servicios/PagoService';
 import { PagoBuilder } from '../models/Pago';
 
 export class PagoController {

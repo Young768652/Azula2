@@ -1,16 +1,13 @@
-import { drizzle } from 'drizzle-orm/node-postgres'
-import { Pool } from 'pg'
-import * as schema from './schema.js'
+import { drizzle } from 'drizzle-orm/node-postgres';
+import { Pool } from 'pg';
+import * as schema from './schema.js';
 
+// Ahora usará el link de la nube cuando esté en Netlify
 const pool = new Pool({
-  host: 'localhost',
-  port: 5432,
-  user: 'postgres',
-  password: '12345',
-  database: 'Azula2',
-})
+  connectionString: process.env.DATABASE_URL
+});
 
 export const db = drizzle({
   client: pool,
   schema,
-})
+});
